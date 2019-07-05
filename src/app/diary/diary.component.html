@@ -1,0 +1,9 @@
+<h1>My Diary</h1>
+<hr>
+<ul>
+    <div *ngFor='let diary of diarys; let i = index'>
+         <li appStrikethrough>{{diary.name}} due on{{diary.completeDate|date|uppercase}}</li>
+         <button (click)='toggleDetails(i)'>Toggle Details</button>
+         <app-diary-detail *ngIf='diary.showDescription'[diary]='diary'(isComplete)='deleteDiary($event, i)'></app-diary-detail>
+    </div>
+</ul>
